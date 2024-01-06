@@ -19,5 +19,6 @@ let package = Package(
         .testTarget(
             name: "BLogTests",
             dependencies: ["BLog"]),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )

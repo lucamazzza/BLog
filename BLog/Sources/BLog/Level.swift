@@ -1,6 +1,6 @@
 // MIT License
 //
-// Copyright (c) 2023 Luca Mazza
+// Copyright (c) 2024 Luca Mazza
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +28,11 @@ import Foundation
 ///
 /// - Authors: Luca Mazza
 /// - Version: 1.0.0
-public enum Level {
-    case info
-    case debug
-    case trace
-    case alert
-    case warning
-    case error
-    case fatal
+public enum Level: String{
+    case debug = "debug"
+    case info = "info"
+    case notice = "notice"
+    case warning = "warning"
+    case error = "error"
+    case fatal = "fatal"
 }

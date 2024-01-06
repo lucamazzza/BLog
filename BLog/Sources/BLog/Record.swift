@@ -1,6 +1,6 @@
 // MIT License
 //
-// Copyright (c) 2023 Luca Mazza
+// Copyright (c) 2024 Luca Mazza
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,32 +24,111 @@
 
 import Foundation
 
-/// Abstracts the concept of a `Record`.
+/// A `Record` is a log entry.
 ///
-/// A record is a single logged action in the log table.
+/// It contains the date the entry was created, a ``level`` and a message.
+///
+/// ```
+/// let record: Record = Record()
+/// ```
 ///
 /// - Authors: Luca Mazza
-/// - Version: 1.0
-public protocol Record {
+/// - Version: 1.0.0
+/// - Note: Work in progress
+public final class Record {
 
-    /// Parses the record to a formatted, readable `String` format
-    func toString() -> String
+    /// Date of the log
+    private var date: Date
 
-    /// Parses the record to a JSON `String`
-    func parseToJSON(url: URL)
+    /// Message of the log
+    private var message: String
 
-    /// Parses the record to an XML `String`
-    func parseToXML(url: URL)
+    /// Log level
+    private var level: Level
 
-    /// Parses the record to a CSV `String`
-    func parseToCSV(url: URL)
+    /// File where the log was created
+    private var file: String
 
-    /// Parses the record to a YAML `String`
-    func parseToYAML(url: URL)
+    /// Line where the log was created
+    private var line: Int
 
-    /// Parses the record to a PDF file
-    func parseToPdf(url: URL)
+    /// Function where the log was created
+    private var function: String
 
-    /// Parses a record to the relative DB
-    func parseToDB(dbConnectionString: String)
+    /// Initializes the record by assigning it a date, a message and a level
+    ///
+    /// - Parameters:
+    ///     - date: Date of the log
+    ///     - message: Message of the log
+    ///     - level: Log level
+    ///     - file: File where the log was created
+    ///     - line: Line where the log was created
+    ///     - function: Function where the log was created
+    public init(
+        date: Date,
+        message: String,
+        level: Level,
+        file: String,
+        line: Int,
+        function: String
+    ) {
+        self.date = date
+        self.message = message
+        self.level = level
+        self.file = file
+        self.line = line
+        self.function = function
+    }
+
+    /// Converts the record to a Human-Readable String.
+    ///
+    /// - Returns: The record as a String
+    @available(macOS 12.0, *)
+    public func toString() -> String {
+        let date: String = self.date.ISO8601Format()
+        let message: String = self.message
+        let location: String = "\(self.file.components(separatedBy: "/").last ?? ""):\(self.function):\(self.line)"
+        let formattedRecord = String(
+            format: "%@ | %@ | %@ - %@",
+            date,
+            self.level.rawValue.padding(
+                toLength: 7,
+                withPad: " ",
+                startingAt: 0
+            ),
+            location,
+            message)
+        return formattedRecord
+    }
+
+    ///
+    public func parseToJSON(url: URL) {
+        // TODO: Implement
+    }
+
+    ///
+    public func parseToXML(url: URL) {
+        // TODO: Implement
+    }
+
+    ///
+    public func parseToCSV(url: URL) {
+        // TODO: Implement
+    }
+
+    ///
+    public func parseToYAML(url: URL) {
+        // TODO: Implement
+    }
+
+    ///
+    public func parseToPdf(url: URL) {
+        // TODO: Implement
+    }
+
+    ///
+    public func parseToDB(dbConnectionString: String) {
+        // TODO: Implement
+
+    }
 }

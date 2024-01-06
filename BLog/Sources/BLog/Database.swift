@@ -1,6 +1,6 @@
 // MIT License
 //
-// Copyright (c) 2023 Luca Mazza
+// Copyright (c) 2024 Luca Mazza
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,10 +20,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-// Created by Luca Mazza on 2023/12/20.
+//  Created by Luca Mazza on 2024/1/6.
 
 import Foundation
 
-public final class BLogger {
-    
+/// Databases supported by BLog
+///
+/// - Authors: Luca Mazza
+/// - Version: 1.0.0
+public enum Database {
+    case mysql
+    case mongo
+    case sqlite
+    case postgre
+    case oracle
+    case mssql
+    case mariadb
 }

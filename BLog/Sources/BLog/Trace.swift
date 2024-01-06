@@ -1,6 +1,6 @@
 // MIT License
 //
-// Copyright (c) 2023 Luca Mazza
+// Copyright (c) 2024 Luca Mazza
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,18 +26,19 @@ import Foundation
 
 /// A trace is a collection of records that keeps trace of an execution.
 ///
-/// A trace can contain different records, each of them can contain different information
-/// about the execution.
+/// A trace can contain different records, each of them can contain different 
+/// information about the execution.
 ///
 /// The whole trace can be converted toString in a human readable format
 ///
 /// ```
-/// 
+/// var trace: Trace = new Trace("Example")
 /// ```
 ///
 /// - Authors: Luca Mazza
 /// - Version: 1.0.0
 /// - Note: Work in progress
+@available(macOS 12.0, *)
 public class Trace {
 
     /// Title of the trace
@@ -58,7 +59,6 @@ public class Trace {
     /// Appends a record to the trace-.
     ///
     /// - Parameters: record: The record to append
-    
     func append(_ record: Record) {
         self.records.append(record)
     }
@@ -75,7 +75,9 @@ public class Trace {
         return result
     }
 
+    /// Prints out the trace on terminal
     func print() {
         Swift.print(self.toString())
+        
     }
 }
