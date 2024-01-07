@@ -1,5 +1,4 @@
-# library
-# BData
+# BLog
 [![GitHub release](https://img.shields.io/github/v/release/lucamazzza/BLog?color=green&label=latest%20release&sort=semver)](https://github.com/lucamazzza/BLog/releases/latest)
 [![JDK Version](https://img.shields.io/badge/Swift-5.9.1-orange.svg?logo=swift)](https://www.swift.org/about/)
 [![License](https://img.shields.io/badge/License-MIT-purple)](LICENSE)
