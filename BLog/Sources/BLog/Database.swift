@@ -33,7 +33,5 @@ public enum Database {
     case mongo
     case sqlite
     case postgre
-    case oracle
-    case mssql
     case mariadb
 }

@@ -35,27 +35,29 @@ import Foundation
 /// - Authors: Luca Mazza
 /// - Version: 1.0.0
 /// - Note: Work in progress
+/// - Warning: Compatible only for macoOS 12.0 or later
+@available(macOS 12.0, *)
 public final class Record {
 
-    /// Date of the log
+    /// Date of the log.
     private var date: Date
 
-    /// Message of the log
+    /// Message of the log.
     private var message: String
 
-    /// Log level
+    /// Log level, see ``Level``.
     private var level: Level
 
-    /// File where the log was created
+    /// File where the log was created.
     private var file: String
 
-    /// Line where the log was created
+    /// Line where the log was created.
     private var line: Int
 
-    /// Function where the log was created
+    /// Function where the log was created.
     private var function: String
 
-    /// Initializes the record by assigning it a date, a message and a level
+    /// Initializes the record by assigning it a date, a message and a level.
     ///
     /// - Parameters:
     ///     - date: Date of the log
@@ -83,11 +85,12 @@ public final class Record {
     /// Converts the record to a Human-Readable String.
     ///
     /// - Returns: The record as a String
-    @available(macOS 12.0, *)
     public func toString() -> String {
         let date: String = self.date.ISO8601Format()
         let message: String = self.message
-        let location: String = "\(self.file.components(separatedBy: "/").last ?? ""):\(self.function):\(self.line)"
+        let location: String =
+        "\(self.file.components(separatedBy: "/").last ?? "")" +
+        ":\(self.function):\(self.line)"
         let formattedRecord = String(
             format: "%@ | %@ | %@ - %@",
             date,
@@ -101,34 +104,110 @@ public final class Record {
         return formattedRecord
     }
 
+    /// Converts the record to JSON.
     ///
-    public func parseToJSON(url: URL) {
-        // TODO: Implement
+    /// Creates a JSON block structure containing the date, level,
+    /// message, file, function and line.
+    ///
+    /// See https://json.org
+    ///
+    /// - Returns: The record as a JSON String
+    public func parseToJSON() -> String {
+        return """
+            {
+                "date": "\(self.date.ISO8601Format())",
+                "level": "\(self.level.rawValue)",
+                "message": "\(self.message)",
+                "file": "\(self.file.components(separatedBy: "/").last ?? "")
+                "function": \(self.function)
+                "line": \(self.line)"
+            }
+            """
     }
 
+    /// Converts the record to XML.
     ///
-    public func parseToXML(url: URL) {
-        // TODO: Implement
+    /// Creates an XML block of type "record", containing the date, level
+    /// message, file, function and line
+    ///
+    /// See https://www.w3schools.com/xml
+    ///
+    /// - Returns: The record as a XML String
+    public func parseToXML() -> String{
+        return """
+            <record>
+                <date>\(self.date.ISO8601Format())</date>
+                <level>\(self.level.rawValue)</level>
+                <message>\(self.message)</message>
+                <file>\(self.file.components(separatedBy: "/").last ?? "")</file>
+                <function>\(self.function)</function>
+                <line>\(self.line)</line>
+            </record>
+            """
     }
 
+    /// Converts the record to CSV.
     ///
-    public func parseToCSV(url: URL) {
-        // TODO: Implement
+    /// Creates a CSV line containing the date, level, message, file, function
+    /// and line
+    ///
+    /// See https://en.wikipedia.org/wiki/Comma-separated_values
+    ///
+    /// - Returns: The record as a CSV String
+    public func parseToCSV() -> String {
+        return "\(self.date.ISO8601Format())," +
+        "\(self.level.rawValue)," +
+        "\(self.message)," +
+        "\(self.file.components(separatedBy: "/").last ?? "")," +
+        "\(self.function)," +
+        "\(self.line)" +
+        "\n"
     }
 
+    /// Converts the record to YAML.
     ///
-    public func parseToYAML(url: URL) {
-        // TODO: Implement
+    /// Creates a YAML block of type "record", containing the date, level,
+    /// message file, function and line
+    ///
+    /// See https://yaml.org
+    ///
+    /// - Returns: The record as a YAML String
+    public func parseToYAML() -> String {
+        return """
+            record:
+                date: \(self.date.ISO8601Format())
+                level: \(self.level.rawValue)
+                message: \(self.message)
+                file: \(self.file.components(separatedBy: "/").last ?? "")
+                function: \(self.function)
+                line: \(self.line)
+            """
     }
 
-    ///
-    public func parseToPdf(url: URL) {
+    /// Converts the record to PDF.
+    public func parseToPdf() -> String {
         // TODO: Implement
+        return ""
     }
 
-    ///
-    public func parseToDB(dbConnectionString: String) {
-        // TODO: Implement
-
+    /// Converts the record to a DML string.
+    public func parseToDB(db: Database) -> String {
+        switch db {
+            case .mariadb:
+                // TODO: IMPLEMENT
+                return "mariadb"
+            case .mongo:
+                // TODO: IMPLEMENT
+                return "mongo"
+            case .mysql:
+                // TODO: IMPLEMENT
+                return "mysql"
+            case .postgre:
+                // TODO: IMPLEMENT
+                return "postgre"
+            case .sqlite:
+                // TODO: IMPLEMENT
+                return "sqlite"
+        }
     }
 }

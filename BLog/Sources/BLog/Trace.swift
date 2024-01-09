@@ -80,4 +80,9 @@ public class Trace {
         Swift.print(self.toString())
         
     }
+    
+    ///
+    func insertInDB(database: Database, dbConnectionString: String) {
+        // TODO: Implement
+    }
 }
