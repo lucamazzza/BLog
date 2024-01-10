@@ -26,7 +26,7 @@ import Foundation
 
 /// A trace is a collection of records that keeps trace of an execution.
 ///
-/// A trace can contain different records, each of them can contain different 
+/// A trace can contain different records, each of them can contain different
 /// information about the execution.
 ///
 /// The whole trace can be converted toString in a human readable format
@@ -38,31 +38,34 @@ import Foundation
 /// - Authors: Luca Mazza
 /// - Version: 1.0.0
 /// - Note: Work in progress
+/// - Warning: Compatible only for macoOS 12.0 or later
 @available(macOS 12.0, *)
 public class Trace {
-
+    
     /// Title of the trace
     private var title: String;
-
+    
     /// List of records contained in the trace
     private var records: [Record];
-
-    /// Initializes the trace by giving it a title
+    
+    /// Initializes a new ``Trace`` instance
     /// The list of records is initialized empty
     ///
-    /// - Parameters: title: The title of the trace
+    /// - Parameters:
+    ///    - title: The title of the trace
     public init(title: String) {
         self.title = title;
         records = []
     }
-
+    
     /// Appends a record to the trace-.
     ///
-    /// - Parameters: record: The record to append
+    /// - Parameters:
+    ///    - record: The record to append
     func append(_ record: Record) {
         self.records.append(record)
     }
-
+    
     /// Converts the trace to a Human-Readable String.
     ///
     /// - Returns: The trace as a String
@@ -74,14 +77,18 @@ public class Trace {
         }
         return result
     }
-
+    
     /// Prints out the trace on terminal
     func print() {
         Swift.print(self.toString())
         
     }
     
+    /// Inserts the trace in the database
     ///
+    /// - Parameters:
+    ///    - database: The database to use
+    ///    - dbConnectionString: The database connection string
     func insertInDB(database: Database, dbConnectionString: String) {
         // TODO: Implement
     }

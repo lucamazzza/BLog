@@ -57,15 +57,15 @@ public final class Record {
     /// Function where the log was created.
     private var function: String
 
-    /// Initializes the record by assigning it a date, a message and a level.
+    /// Initializes a new ``Record`` instance
     ///
     /// - Parameters:
-    ///     - date: Date of the log
-    ///     - message: Message of the log
-    ///     - level: Log level
-    ///     - file: File where the log was created
-    ///     - line: Line where the log was created
-    ///     - function: Function where the log was created
+    ///    - date: Date of the log
+    ///    - message: Message of the log
+    ///    - level: Log level
+    ///    - file: File where the log was created
+    ///    - line: Line where the log was created
+    ///    - function: Function where the log was created
     public init(
         date: Date,
         message: String,
@@ -191,6 +191,7 @@ public final class Record {
     }
 
     /// Converts the record to a DML string.
+    @discardableResult
     public func parseToDB(db: Database) -> String {
         switch db {
             case .mariadb:

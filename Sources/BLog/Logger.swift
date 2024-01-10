@@ -42,10 +42,10 @@ public final class Logger {
     /// Trace instance for records logged
     private var trace: Trace
 
-    /// Initializes the Logger with a title
+    /// Initializes a new ``Logger`` instance
     ///
     /// - Parameters:
-    ///     - title: The title of the trace
+    ///    - title: The title of the trace
     public init(title: String) {
         self.trace = Trace(title: title)
     }
@@ -53,10 +53,10 @@ public final class Logger {
     /// Prints a `debug` log and saves it in the trace
     ///
     /// - Parameters:
-    ///     - message: the message to print
-    ///     - file: the file where the message was created
-    ///     - line: the line where the message was created
-    ///     - function: the function where the message was created
+    ///    - message: the message to print
+    ///    - file: the file where the message was created
+    ///    - line: the line where the message was created
+    ///    - function: the function where the message was created
     public func debug(
         _ message: String,
         file: String = #file,
@@ -78,10 +78,10 @@ public final class Logger {
     /// Prints an `info` log and saves it in the trace
     ///
     /// - Parameters:
-    ///     - message: the message to print
-    ///     - file: the file where the message was created
-    ///     - line: the line where the message was created
-    ///     - function: the function where the message was created
+    ///    - message: the message to print
+    ///    - file: the file where the message was created
+    ///    - line: the line where the message was created
+    ///    - function: the function where the message was created
     public func info(
         _ message: String,
         file: String = #file,
@@ -103,10 +103,10 @@ public final class Logger {
     /// Prints an `notice` log and saves it in the trace
     ///
     /// - Parameters:
-    ///     - message: the message to print
-    ///     - file: the file where the message was created
-    ///     - line: the line where the message was created
-    ///     - function: the function where the message was created
+    ///    - message: the message to print
+    ///    - file: the file where the message was created
+    ///    - line: the line where the message was created
+    ///    - function: the function where the message was created
     public func notice(
         _ message: String,
         file: String = #file,
@@ -129,10 +129,10 @@ public final class Logger {
     /// Prints an `warning` log and saves it in the trace
     ///
     /// - Parameters:
-    ///     - message: the message to print
-    ///     - file: the file where the message was created
-    ///     - line: the line where the message was created
-    ///     - function: the function where the message was created
+    ///    - message: the message to print
+    ///    - file: the file where the message was created
+    ///    - line: the line where the message was created
+    ///    - function: the function where the message was created
     public func warning(
         _ message: String,
         file: String = #file,
@@ -154,10 +154,10 @@ public final class Logger {
     /// Prints an `error` log and saves it in the trace
     ///
     /// - Parameters:
-    ///     - message: the message to print
-    ///     - file: the file where the message was created
-    ///     - line: the line where the message was created
-    ///     - function: the function where the message was created
+    ///    - message: the message to print
+    ///    - file: the file where the message was created
+    ///    - line: the line where the message was created
+    ///    - function: the function where the message was created
     public func error(
         _ message: String,
         file: String = #file,
@@ -179,10 +179,10 @@ public final class Logger {
     /// Prints an `fatal` log and saves it in the trace
     ///
     /// - Parameters:
-    ///     - message: the message to print
-    ///     - file: the file where the message was created
-    ///     - line: the line where the message was created
-    ///     - function: the function where the message was created
+    ///    - message: the message to print
+    ///    - file: the file where the message was created
+    ///    - line: the line where the message was created
+    ///    - function: the function where the message was created
     public func fatal(
         _ message: String,
         file: String = #file,
